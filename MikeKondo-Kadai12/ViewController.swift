@@ -31,7 +31,7 @@ final class ViewController: UIViewController {
     private func calcPrice(taxRate: Int, taxFreePrice: Int) {
         let price = taxFreePrice + (taxFreePrice / 100) * taxRate
         priceLabel.text = "\(price)円"
-        UserDefaults.standard.setValue(taxRate, forKey: "taxRateKey")
+        UserDefaults.standard.setValue(taxRate, forKey: taxRateKey)
     }
 
     private func setupTextField() {
@@ -40,7 +40,7 @@ final class ViewController: UIViewController {
     }
 
     private func initTaxRate() {
-        guard let savedTaxRate = UserDefaults.standard.object(forKey: "taxRateKey") as? Int else { return }
+        guard let savedTaxRate = UserDefaults.standard.object(forKey: taxRateKey) as? Int else { return }
         taxRateTextField.text = String(savedTaxRate)
     }
 
