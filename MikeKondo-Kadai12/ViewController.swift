@@ -14,6 +14,8 @@ final class ViewController: UIViewController {
     @IBOutlet private weak var taxRateTextField: UITextField!
     @IBOutlet private weak var priceLabel: UILabel!
 
+    private let taxRateKey = "taxRateKey"
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTextField()
@@ -27,7 +29,7 @@ final class ViewController: UIViewController {
     }
 
     private func calcPrice(taxRate: Int, taxFreePrice: Int) {
-        let price = taxFreePrice + (taxFreePrice/100)*taxRate
+        let price = taxFreePrice + (taxFreePrice / 100) * taxRate
         priceLabel.text = "\(price)円"
         UserDefaults.standard.setValue(taxRate, forKey: "taxRateKey")
     }
